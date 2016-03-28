@@ -1,0 +1,38 @@
+
+what is runtime in oc?
+
+Objective-C的动态特性
+
+动态类型（Dynamic typing），动态绑定（Dynamic binding）和动态加载（Dynamic loading）。
+
+
+
+//an opaque type that represents an objective-c class
+typedef struct objec_class *Class;
+
+///represents an instance of a class
+struct objc_object{
+  Class isa   OBJC_ISA_AVALABILITY;
+};
+
+///A pointer to an instance of a class
+typedef struct objc_object *id;
+
+
+struct objc_class{
+  Class isa     OBJC_ISA_AVAILABILITY;
+  
+  #if !__OBJEC2__
+  
+  Class super_class     OBJC2_UNAVAILABLE;//父类
+  const char *name      OBJC2_UNAVAILABLE;//类名
+  long version          OBJC2_UNAVAILABLE;//类的版本信息，默认为0
+  long info             OBJC2_UNAVAILABLE;//类信息，供运行期使用的一些位标识
+  long instance_size    OBJC2_UNAVAILABLE;//该类的实例变量大小
+  struct objc_ivar_list *ivars OBJC2_UNAVAILABLE;//该类的成员变量链表
+  struct objc_method_list **methodLists OBJC2_UNAVAILABLE;//方法定义的链表
+  struct objc_cache *cache OBJC2_UNAVAILABLE;//方法缓存
+  struct objc_protocol_list *protocols OBJC2_UNAVAILABLE;//协议链表
+  
+  #endif
+}OBJC2_UNAVAILABLE;
