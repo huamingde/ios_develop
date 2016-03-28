@@ -107,3 +107,32 @@ id
   obj.method(argument);
   //Object-C则写成如下
   [obj method : argument];
+
+
+@interface MyObject : NSObject{
+  int memberVar1;
+  id memberVar2;
+  }
+  
+  + (return_type) class_method;//类方法
+  - (return_type) instance_method1;//实例方法
+  - (return_type) instance_method2: (int) p1;//实例方法2
+  - (retuen_type) instance_method3: (int) p1 andPar: (int) p2;
+  
+  @end
+  
+  //对照
+  
+  class MyObject : public NSObject
+  {
+    protected:
+      int memberVar1;
+      void * memberVar2;
+      
+    public:
+      static return_type class_method();
+      
+      return_type instance_method1();
+      return_type instance_medhod2(int p1);
+      return_type instance_method3(int p1, int p2);
+  }
